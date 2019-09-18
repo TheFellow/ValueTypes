@@ -25,5 +25,7 @@ namespace ValueTypes
         public static implicit operator ValueBase(ulong value) => new Value<ulong>(value);
         public static implicit operator ValueBase(short value) => new Value<short>(value);
         public static implicit operator ValueBase(ushort value) => new Value<ushort>(value);
+
+        public static implicit operator ValueBase(string value) => new ValueString(value);
     }
 }

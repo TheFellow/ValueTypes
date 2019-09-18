@@ -8,7 +8,6 @@ namespace ValueTypes
         public T Content { get; }
         public Value(T content) => this.Content = content;
 
-
         public override bool Equals([AllowNull] ValueBase other)
         {
             if (other is null) return false;
@@ -16,6 +15,7 @@ namespace ValueTypes
             return false;
         }
 
+        public override bool Equals(object? obj) => this.Equals(obj as Value<T>);
         public override int GetHashCode() => Content.GetHashCode();
         public override string ToString() => $"Value({Content})";
     }
