@@ -11,9 +11,15 @@ namespace ValueTypesTests
 
 
         [TestMethod]
-        public void Equals_Null_IsFalse()
+        public void Value_EqualsNull_IsFalse()
         {
-            Assert.Inconclusive();
+            T value = GetSampleValue1();
+
+            Assert.IsFalse(value.Equals(null));
+            Assert.IsFalse(value == null);
+            Assert.IsFalse(null == value);
+            Assert.IsTrue(value != null);
+            Assert.IsTrue(null != value);
         }
     }
 }
