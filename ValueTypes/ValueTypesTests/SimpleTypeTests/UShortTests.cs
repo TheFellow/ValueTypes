@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ValueTypes;
 
 namespace ValueTypesTests.SimpleTypeTests
 {
     [TestClass]
     public class UShortTests : AbstractValueTypeTests<ushort>
     {
-        protected override ushort GetOtherValue() => (ushort)88;
-        protected override ushort GetSampleValue1() => (ushort)99;
-        protected override ushort GetSampleValue2() => (ushort)99;
+        protected override ValueBase GetOtherValue() => (ushort)88;
+        protected override ValueBase GetSampleValue1() => (ushort)99;
+        protected override ValueBase GetSampleValue2() => (ushort)99;
     }
 }
