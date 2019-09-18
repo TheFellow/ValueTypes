@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace ValueTypes
 {
@@ -18,5 +21,24 @@ namespace ValueTypes
         public override bool Equals(object? obj) => this.Equals(obj as Value<T>);
         public override int GetHashCode() => Content.GetHashCode();
         public override string ToString() => $"Value({Content})";
+    }
+
+    public abstract class Value : ValueBase
+    {
+        protected abstract IEnumerable<ValueBase> GetValues();
+        public override bool Equals([AllowNull] ValueBase other)
+        {
+            if (other is null) return false;
+            if (GetType() != other.GetType()) return false;
+            return this.GetValues().SequenceEqual(((Value)other).GetValues());
+        }
+
+        public sealed override int GetHashCode()
+        {
+            var hash = new HashCode();
+            foreach (var value in GetValues())
+                hash.Add(value);
+            return hash.ToHashCode();
+        }
     }
 }
