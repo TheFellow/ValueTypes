@@ -14,10 +14,6 @@ namespace ValueTypesTests.Geometry
             this.Y = y;
         }
 
-        protected override IEnumerable<ValueBase> GetValues()
-        {
-            yield return X;
-            yield return Y;
-        }
+        protected override IEnumerable<ValueBase> GetValues() => Yield(X, Y);
     }
 }

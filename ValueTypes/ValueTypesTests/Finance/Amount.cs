@@ -16,9 +16,6 @@ namespace ValueTypesTests.Finance
             this.Value = amount;
         }
 
-        protected override IEnumerable<ValueBase> GetValues()
-        {
-            yield return Value;
-        }
+        protected override IEnumerable<ValueBase> GetValues() => Yield(Value);
     }
 }

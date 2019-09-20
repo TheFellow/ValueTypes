@@ -14,10 +14,6 @@ namespace ValueTypesTests.Finance
             this.Amount = amount;
         }
 
-        protected override IEnumerable<ValueBase> GetValues()
-        {
-            yield return Currency;
-            yield return Amount;
-        }
+        protected override IEnumerable<ValueBase> GetValues() => Yield(Currency, Amount);
     }
 }
