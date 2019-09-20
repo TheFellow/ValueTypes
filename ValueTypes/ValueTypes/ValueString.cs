@@ -14,7 +14,6 @@ namespace ValueTypes
             return false;
         }
 
-        public override bool Equals(object? obj) => this.Equals(obj as ValueString);
         public override int GetHashCode() => this.Content.GetHashCode();
 
         public override string ToString() => $"Value(\"{Content}\")";

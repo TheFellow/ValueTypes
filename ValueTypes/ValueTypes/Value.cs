@@ -17,8 +17,7 @@ namespace ValueTypes
             if (other is Value<T> value) return this.Content.Equals(value.Content);
             return false;
         }
-
-        public override bool Equals(object? obj) => this.Equals(obj as Value<T>);
+        
         public override int GetHashCode() => Content.GetHashCode();
         public override string ToString() => $"Value({Content})";
     }
