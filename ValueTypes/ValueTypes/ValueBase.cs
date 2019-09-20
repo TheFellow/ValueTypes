@@ -30,6 +30,6 @@ namespace ValueTypes
 
         public static implicit operator ValueBase(string value) => new ValueString(value);
 
-        protected IEnumerable<ValueBase> Yield(params ValueBase[] values) => values.Select(val => val);
+        protected IEnumerable<ValueBase> Yield(params ValueBase[] values) => values;
     }
 }
