@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace ValueTypes
 {
@@ -27,5 +29,7 @@ namespace ValueTypes
         public static implicit operator ValueBase(ushort value) => new Value<ushort>(value);
 
         public static implicit operator ValueBase(string value) => new ValueString(value);
+
+        protected IEnumerable<ValueBase> Yield(params ValueBase[] values) => values.Select(val => val);
     }
 }
