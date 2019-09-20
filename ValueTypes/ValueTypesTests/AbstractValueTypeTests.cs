@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using ValueTypes;
 
 namespace ValueTypesTests
@@ -10,12 +11,14 @@ namespace ValueTypesTests
         protected abstract ValueBase GetSampleValue2();
         protected abstract ValueBase GetOtherValue();
 
+        private static IEqualityComparer<ValueBase> _comparer = EqualityComparer<ValueBase>.Default;
 
         [TestMethod]
         public void Value_EqualsNull_IsFalse()
         {
             var value = GetSampleValue1();
 
+            Assert.IsFalse(_comparer.Equals(value, null));
             Assert.IsFalse(value.Equals(null));
             Assert.IsFalse(value == null);
             Assert.IsFalse(null == value);
@@ -28,6 +31,7 @@ namespace ValueTypesTests
         {
             var value = GetSampleValue1();
 
+            Assert.IsTrue(_comparer.Equals(value, value));
             Assert.IsTrue(value.Equals(value));
 #pragma warning disable CS1718 // Comparison made to same variable
             Assert.IsTrue(value == value);
@@ -41,6 +45,7 @@ namespace ValueTypesTests
             var value1 = GetSampleValue1();
             var value2 = GetSampleValue2();
 
+            Assert.IsTrue(_comparer.Equals(value1, value2));
             Assert.IsTrue(value1.Equals(value2));
             Assert.IsTrue(value1 == value2);
             Assert.IsTrue(value2 == value1);
@@ -54,6 +59,7 @@ namespace ValueTypesTests
             var value1 = GetSampleValue1();
             var value2 = GetOtherValue();
 
+            Assert.IsFalse(_comparer.Equals(value1, value2));
             Assert.IsFalse(value1.Equals(value2));
             Assert.IsFalse(value2.Equals(value1));
             Assert.IsFalse(value1 == value2);
