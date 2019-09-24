@@ -19,11 +19,11 @@ namespace ValueTypesTests
             var value = GetSampleValue1();
 
             Assert.IsFalse(_comparer.Equals(value, null));
-            Assert.IsFalse(value.Equals(null));
-            Assert.IsFalse(value == null);
-            Assert.IsFalse(null == value);
-            Assert.IsTrue(value != null);
-            Assert.IsTrue(null != value);
+            Assert.IsFalse(value!.Equals(null));
+            Assert.IsFalse(value! == null!);
+            Assert.IsFalse(null! == value!);
+            Assert.IsTrue(value! != null!);
+            Assert.IsTrue(null! != value!);
         }
 
         [TestMethod]
