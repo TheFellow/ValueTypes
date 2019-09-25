@@ -29,6 +29,14 @@ namespace ValueTypesTests
     }
 
     [TestClass]
+    public class LineSegmentTests : AbstractValueTypeTests<LineSegment>
+    {
+        protected override ValueBase GetOtherValue() => new LineSegment(new Point2d(4, 8), new Point2d(15, 16));
+        protected override ValueBase GetSampleValue1() => new LineSegment(new Point2d(4, 8), new Point2d(23, 42));
+        protected override ValueBase GetSampleValue2() => new LineSegment(new Point2d(23, 42), new Point2d(4, 8));
+    }
+
+    [TestClass]
     public class GeometryTests
     {
         [TestMethod]
