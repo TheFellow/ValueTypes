@@ -105,6 +105,22 @@ If we were to use `Yield()` we would be implementing a `Vector`, which is direct
 
 ### Comments
 
-- If you have a combination of unordered collections, and single members, you can just
+If you have a combination of unordered collections, and single members, you can just
 `Concat` the two lists together (from Yield() and Group()).
 
+----
+
+**Dates** deserve special care, which is why there's no cast from a DateTime.
+The problem with dates is that their equality depends on the resolution you need.
+
+Suppose you have a `TransactionDate` which is only supposed to indicate a date.
+That is, {07/04/2019 01:23:45} should be the same as {07/04/2019 08:06:13}.
+(Because the year, month, and day match and we don't care about time components.)
+
+This is likely already handled by your business logic, but I don't make that assumption.
+
+So what do I do?
+
+The recommended solution for this example would be to Yield
+`date.ToString("yyyyMMdd")`.
+This converts the DateTime into a string with precision appropriate for the desired Equality.
