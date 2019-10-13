@@ -11,7 +11,7 @@ namespace ValueTypesTests
         protected abstract ValueBase GetSampleValue2();
         protected abstract ValueBase GetOtherValue();
 
-        private static IEqualityComparer<ValueBase> _comparer = EqualityComparer<ValueBase>.Default;
+        private static readonly IEqualityComparer<ValueBase> _comparer = EqualityComparer<ValueBase>.Default;
 
         [TestMethod]
         public void Value_EqualsNull_IsFalse()
