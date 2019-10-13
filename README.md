@@ -124,3 +124,18 @@ So what do I do?
 The recommended solution for this example would be to Yield
 `date.ToString("yyyyMMdd")`.
 This converts the DateTime into a string with precision appropriate for the desired Equality.
+
+----
+
+**Tuples** of values work as expected.
+
+For example, a tuple of values behaves correctly:
+``` csharp
+var t1 = (new Point2d(4, 8), new Point2d(15, 16));
+var t2 = (new Point2d(4, 8), new Point2d(15, 16));
+
+Assert.AreEqual(t1, t2); // Works
+```
+
+There is no handling for classes which have tuple members.
+This, though, seems *super* unlikely, so I'm not worried about it.
