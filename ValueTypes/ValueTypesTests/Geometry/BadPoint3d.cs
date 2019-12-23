@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ValueTypes;
 
 namespace ValueTypesTests.Geometry
@@ -7,17 +8,8 @@ namespace ValueTypesTests.Geometry
     {
         public int Z { get; }
 
-        public BadPoint3d(int x, int y, int z) : base(x, y)
-        {
-            this.Z = z;
-        }
+        public BadPoint3d(int x, int y, int z) : base(x, y) => this.Z = z;
 
-        protected override IEnumerable<ValueBase> GetValues()
-        {
-            foreach (var value in base.GetValues())
-                yield return value;
-
-            yield return Z;
-        }
+        protected override IEnumerable<ValueBase> GetValues() => base.GetValues().Concat(new ValueBase[] { Z });
     }
 }
