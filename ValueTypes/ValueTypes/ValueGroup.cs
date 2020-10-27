@@ -14,7 +14,7 @@ namespace ValueTypes
                 .GroupBy(v => v)
                 .ToDictionary(g => g.Key, g => g.Count());
             bool ok = true;
-            foreach (var value in other.Values)
+            foreach (var value in other?.Values ?? new ValueBase[0])
             {
                 if (counts.TryGetValue(value, out int c))
                     counts[value] = c - 1;
