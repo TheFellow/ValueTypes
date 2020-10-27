@@ -8,12 +8,12 @@
     <Description>An easy-to-use implementation of Value Objects from DDD. The goal of this little library is to make it as easy as possible to use ValueTypes.</Description>
     <PackageProjectUrl>https://github.com/TheFellow/ValueTypes</PackageProjectUrl>
     <PackageTags>Value, ValueObject, ValueType</PackageTags>
-    <PackageLicenseFile>README.md</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>ValueTypes.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\README.md">
+    <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
