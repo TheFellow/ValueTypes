@@ -1,5 +1,8 @@
 # ValueTypes
-An easy-to-use implementation of ValueObjects from DDD.
+An easy-to-use implementation of ValueObjects from DDD. 
+![ValueTypes](./ValueTypes-Small.png)
+
+Icon made by [Freepik]("https://www.flaticon.com/authors/freepik") from [Flaticon]("https://www.flaticon.com/")
 
 ## Summary
 
