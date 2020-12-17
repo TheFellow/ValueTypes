@@ -16,11 +16,7 @@ namespace ValueTypesTests
         private readonly Word[] _first;
         private readonly Word[] _second;
 
-        public Statement(Word[] first, Word[] last)
-        {
-            _first = first;
-            _second = last;
-        }
+        public Statement(Word[] first, Word[] second) => (_first, _second) = (first, second);
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(_first.AsValues(), _second.AsValues());
     }

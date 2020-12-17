@@ -106,6 +106,65 @@ the segment from (4,5) to (2,3).
 
 If we were to use `Yield()` we would be implementing a `Vector`, which is directed.
 
+### Sequences
+These case represent almost the opposite of a Group. This is for use in a case where you have a sequence of `Values` that
+are just one part of your `Value`. These are cases where you want to `Yield` a whole sequence of `Value` types in a single unit.
+
+Order within the unit does matter, otherwise you'd just use a `Group`. An example would help here.
+
+Suppose you are modelling two aspects of a classroom. The room itself, and the process of taking attendance.
+If there are the same people in the classroom in the same seats then we want to say the classroom is the same.
+On the other hand, when taking attendance the people in the classroom may enter in different orders;
+In this case rollcall goes differently because it's in a different order. Same people, same seats, different order means different rollcall.
+
+(I know this is a bit of a stretched example, I wish I would have done the difference between the bill at
+a restaurant and the receipt printing order but I'm committed to the tests I wrote now...)
+
+The way to pull this off is by using an extension method on `IEnumerable<T>` called `AsValues()` where
+`T` either is a `Value` or can be cast to one. All of the same primitive types plus `string` and `Guid` are supported.
+
+From the tests; Classroom is order independent, so `Group` is used:
+``` csharp
+public class Classroom : Value
+{
+    private readonly Seat[] _seats;
+
+    public Classroom(IEnumerable<Seat> seats) => _seats = seats.ToArray();
+
+    protected override IEnumerable<ValueBase> GetValues() => Group(_seats);
+}
+```
+
+Rollcall, however, is order dependent, so we `Yield` using `AsValues`.
+``` csharp
+public class Rollcall : Value
+{
+    public IEnumerable<Seat> Seats { get; }
+    public Rollcall(IEnumerable<Seat> seats) => Seats = seats;
+
+    protected override IEnumerable<ValueBase> GetValues() => Yield(Seats.AsValues());
+}
+```
+
+The `AsValues` extension method essentially let's you `Yield` a standalone sequence of values
+in lieu of having to write `Yield(Field1, Field2, ...)`
+
+Note that you can certainly mix and match these things together as needed:
+
+``` csharp
+public class ChemicalCompound : Value
+{
+    public string Name { get; }
+    public Symbol ChemicalSymbol { get; }
+    public IEnumerable<Elements> Elements { get; }
+
+    public ChemicalCompound(string name, Symbol chemicalSymbol, IEnumerable<Elements> elements) =>
+        (Name, ChemicalSymbol, Elements) = (name, chemicalSymbol, elements.ToList());
+
+    protected override IEnumerable<ValueBase> GetValues() => Yield(Name, Symbol, Elements.AsValues());
+}
+```
+
 ### Comments
 
 If you have a combination of unordered collections, and single members, you can just
