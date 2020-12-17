@@ -10,4 +10,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueBase GetSampleValue1() => (float)2.718;
         protected override ValueBase GetSampleValue2() => (float)2.718;
     }
+
+    [TestClass]
+    public class FloatSequenceTests : AbstractEnumerableValueTypeTests
+    {
+        protected override ValueSequence GetOtherSequence() => new[] { (float)3.14, (float)2.718 }.AsValues();
+        protected override ValueSequence GetSampleSequence1() => new[] { (float)15.16, (float)23.42 }.AsValues();
+        protected override ValueSequence GetSampleSequence2() => new[] { (float)15.16, (float)23.42 }.AsValues();
+    }
 }

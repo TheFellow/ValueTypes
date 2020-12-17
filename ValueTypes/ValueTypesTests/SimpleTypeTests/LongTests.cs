@@ -10,4 +10,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueBase GetSampleValue1() => (long)456;
         protected override ValueBase GetSampleValue2() => (long)456;
     }
+
+    [TestClass]
+    public class LongSequenceTests : AbstractEnumerableValueTypeTests
+    {
+        protected override ValueSequence GetOtherSequence() => new[] { (long)123, (long)456 }.AsValues();
+        protected override ValueSequence GetSampleSequence1() => new[] { (long)15, (long)16 }.AsValues();
+        protected override ValueSequence GetSampleSequence2() => new[] { (long)15, (long)16 }.AsValues();
+    }
 }
