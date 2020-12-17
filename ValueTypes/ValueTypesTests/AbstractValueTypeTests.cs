@@ -33,6 +33,7 @@ namespace ValueTypesTests
 
             Assert.IsTrue(_comparer.Equals(value, value));
             Assert.IsTrue(value.Equals(value));
+            Assert.AreEqual(value, value);
 #pragma warning disable CS1718 // Comparison made to same variable
             Assert.IsTrue(value == value);
             Assert.IsFalse(value != value);
@@ -46,6 +47,7 @@ namespace ValueTypesTests
             var value2 = GetSampleValue2();
 
             Assert.IsTrue(_comparer.Equals(value1, value2));
+            Assert.AreEqual(value1, value2);
             Assert.IsTrue(value1.Equals(value2));
             Assert.IsTrue(value1 == value2);
             Assert.IsTrue(value2 == value1);
@@ -60,6 +62,7 @@ namespace ValueTypesTests
             var value2 = GetOtherValue();
 
             Assert.IsFalse(_comparer.Equals(value1, value2));
+            Assert.AreNotEqual(value1, value2);
             Assert.IsFalse(value1.Equals(value2));
             Assert.IsFalse(value2.Equals(value1));
             Assert.IsFalse(value1 == value2);

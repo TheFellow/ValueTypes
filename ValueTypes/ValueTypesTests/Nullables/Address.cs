@@ -16,6 +16,6 @@ namespace ValueTypesTests.Nullables
             City = city;
         }
         public override string ToString() => $"{Street1} {Street2}, {City}";
-        protected override IEnumerable<ValueBase> GetValues() => Yield(Street1, Street2!, City);
+        protected override IEnumerable<ValueBase> GetValues() => Yield(Street1, Street2, City);
     }
 }

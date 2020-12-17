@@ -12,6 +12,19 @@ namespace ValueTypesTests.SimpleTypeTests
     }
 
     [TestClass]
+    public class NullableStringTests
+    {
+        [TestMethod]
+        public void NullValueString_EqualsNullValueString_IsTrue()
+        {
+            ValueBase value1 = (string)null!;
+            ValueBase value2 = (string)null!;
+
+            Assert.AreEqual(value1, value2);
+        }
+    }
+
+    [TestClass]
     public class StringSequenceTests : AbstractEnumerableValueTypeTests
     {
         protected override ValueSequence GetOtherSequence() => new[] { "Hello", "World" }.AsValues();

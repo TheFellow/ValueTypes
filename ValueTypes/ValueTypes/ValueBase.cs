@@ -28,10 +28,10 @@ namespace ValueTypes
         public static implicit operator ValueBase(short value) => new Value<short>(value);
         public static implicit operator ValueBase(ushort value) => new Value<ushort>(value);
 
-        public static implicit operator ValueBase(string value) => new ValueString(value);
+        public static implicit operator ValueBase(string? value) => new ValueString(value);
         public static implicit operator ValueBase(Guid value) => new ValueString(value.ToString());
 
-        protected IEnumerable<ValueBase> Yield(params ValueBase[] values) => values;
+        protected IEnumerable<ValueBase> Yield(params ValueBase?[] values) => values!;
         protected IEnumerable<ValueBase> Group(params ValueBase[] values) => new[] { new ValueGroup(values) };
     }
 }

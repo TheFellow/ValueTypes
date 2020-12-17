@@ -13,6 +13,6 @@ namespace ValueTypesTests.Nullables
             Address = address;
         }
 
-        protected override IEnumerable<ValueBase> GetValues() => Yield(Name, Address!);
+        protected override IEnumerable<ValueBase> GetValues() => Yield(Name, Address);
     }
 }
