@@ -106,7 +106,7 @@ the segment from (4,5) to (2,3).
 
 If we were to use `Yield()` we would be implementing a `Vector`, which is directed.
 
-### Sequences
+### Sequences (Nested Yield)
 These case represent almost the opposite of a Group. This is for use in a case where you have a sequence of `Values` that
 are just one part of your `Value`. These are cases where you want to `Yield` a whole sequence of `Value` types in a single unit.
 
@@ -161,14 +161,54 @@ public class ChemicalCompound : Value
     public ChemicalCompound(string name, Symbol chemicalSymbol, IEnumerable<Elements> elements) =>
         (Name, ChemicalSymbol, Elements) = (name, chemicalSymbol, elements.ToList());
 
-    protected override IEnumerable<ValueBase> GetValues() => Yield(Name, Symbol, Elements.AsValues());
+    protected override IEnumerable<ValueBase> GetValues() => Yield(Name, ChemicalSymbol, Elements.AsValues());
 }
+```
+
+### Groups
+
+"But I want to do that same thing with nested groups!" you say.
+Not a problem, we've got you covered. Just use `AsGroup`!
+
+This has the same effect as using the `Group` method to return an unordered collection of properties with Value-type semantics.
+
+Here's an example from the Finance tests which shows that what makes wallets equal is their contents, ignoring order.
+A `Wallet` contains `Money` and `CreditCards`. Here'e is its complete definition:
+
+```csharp
+public class Wallet : Value
+{
+    private IEnumerable<Money> Cash { get; }
+    private IEnumerable<CreditCard> CreditCards { get; }
+
+    public Wallet(IEnumerable<Money> cash, IEnumerable<CreditCard> creditCards) =>
+        (Cash, CreditCards) = (cash, creditCards);
+
+    protected override IEnumerable<ValueBase> GetValues() => Yield(Cash.AsGroup(), CreditCards.AsGroup());
+}
+```
+
+The following `Wallet` instances are equal.
+(I have some extension methods helping make this all more compact.)
+Note that order does not matter in either case:
+``` csharp
+var wallet1 = new Wallet(
+    new[] { 20m.Dollars(), 10m.Euros(), 5m.Euros() },
+    new[] { CreditCompany.Visa.For(1000m.ToAmount()), CreditCompany.MasterCard.For(5000m.ToAmount())
+    });
+
+var wallet2 = new Wallet(
+    new[] { 10m.Euros(), 20m.Dollars(), 5m.Euros() },
+    new[] { CreditCompany.MasterCard.For(5000m.ToAmount()), CreditCompany.Visa.For(1000m.ToAmount())
+    });
 ```
 
 ### Comments
 
 If you have a combination of unordered collections, and single members, you can just
 `Concat` the two lists together (from Yield() and Group()).
+
+Or, as of 1.1.0 you can simply `Yield(Items.AsValues(), GroupOfThings.AsGroup(), ...)`
 
 ----
 

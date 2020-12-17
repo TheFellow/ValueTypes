@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using ValueTypes;
 using ValueTypesTests.Finance;
 
@@ -26,6 +27,22 @@ namespace ValueTypesTests
         protected override ValueBase GetOtherValue() => new Money(Currency.USD, new Amount(1234.56m));
         protected override ValueBase GetSampleValue1() => new Money(Currency.EUR, new Amount(1234.56m));
         protected override ValueBase GetSampleValue2() => new Money(Currency.EUR, new Amount(1234.56m));
+    }
+
+    [TestClass]
+    public class CreditCompanyTests : AbstractValueTypeTests<CreditCompany>
+    {
+        protected override ValueBase GetOtherValue() => CreditCompany.MasterCard;
+        protected override ValueBase GetSampleValue1() => CreditCompany.Visa;
+        protected override ValueBase GetSampleValue2() => CreditCompany.Visa;
+    }
+
+    [TestClass]
+    public class CreditCardTests : AbstractValueTypeTests<CreditCard>
+    {
+        protected override ValueBase GetOtherValue() => new CreditCard(CreditCompany.MasterCard, new Amount(10_000m));
+        protected override ValueBase GetSampleValue1() => new CreditCard(CreditCompany.Visa, new Amount(10_000m));
+        protected override ValueBase GetSampleValue2() => new CreditCard(CreditCompany.Visa, new Amount(10_000m));
     }
 
     [TestClass]
@@ -57,6 +74,28 @@ namespace ValueTypesTests
             Assert.IsFalse(money2 == money1);
             Assert.IsTrue(money1 != money2);
             Assert.IsTrue(money2 != money1);
+        }
+
+        [TestMethod]
+        public void Wallet_WithSameCashAndCards_AreEqual()
+        {
+            var wallet1 = new Wallet(
+                new[] { 20m.Dollars(), 10m.Euros(), 5m.Euros() },
+                new[] { CreditCompany.Visa.For(1000m.ToAmount()), CreditCompany.MasterCard.For(5000m.ToAmount())
+                });
+
+            var wallet2 = new Wallet(
+                new[] { 10m.Euros(), 20m.Dollars(), 5m.Euros() },
+                new[] { CreditCompany.MasterCard.For(5000m.ToAmount()), CreditCompany.Visa.For(1000m.ToAmount())
+                });
+
+            EqualityComparer<Wallet>.Default.Equals(wallet1, wallet2);
+            Assert.AreEqual(wallet1, wallet2);
+            Assert.IsTrue(wallet1.Equals(wallet2));
+            Assert.IsTrue(wallet1 == wallet2);
+            Assert.IsTrue(wallet2 == wallet1);
+            Assert.IsFalse(wallet1 != wallet2);
+            Assert.IsFalse(wallet2 != wallet1);
         }
     }
 }
