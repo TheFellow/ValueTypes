@@ -18,4 +18,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new[] { 15m, 16.2m }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new[] { 15m, 16.2m }.AsValues();
     }
+
+    [TestClass]
+    public class DecimalGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new[] { 4m, 8m }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new[] { 15m, 16.2m }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new[] { 16.2m, 15m }.AsGroup();
+    }
 }

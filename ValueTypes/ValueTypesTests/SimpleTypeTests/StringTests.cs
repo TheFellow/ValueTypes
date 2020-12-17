@@ -31,4 +31,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new[] { "Hola", "Amigo" }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new[] { "Hola", "Amigo" }.AsValues();
     }
+
+    [TestClass]
+    public class StringGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new[] { "Hello", "World" }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new[] { "Amigo", "Hola" }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new[] { "Hola", "Amigo" }.AsGroup();
+    }
 }

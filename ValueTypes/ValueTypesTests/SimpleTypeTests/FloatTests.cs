@@ -18,4 +18,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new[] { (float)15.16, (float)23.42 }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new[] { (float)15.16, (float)23.42 }.AsValues();
     }
+
+    [TestClass]
+    public class FloatGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new[] { (float)3.14, (float)2.718 }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new[] { (float)23.42, (float)15.16 }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new[] { (float)15.16, (float)23.42 }.AsGroup();
+    }
 }

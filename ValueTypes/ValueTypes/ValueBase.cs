@@ -14,6 +14,7 @@ namespace ValueTypes
         public static bool operator !=(ValueBase a, ValueBase b) => !(a == b);
 
         // Note: Any additions to this list must be reflected in the enumerable extensions
+        // Note: Any additions to this list must be reflected in the group extensions
         public static implicit operator ValueBase(bool value) => new Value<bool>(value);
         public static implicit operator ValueBase(byte value) => new Value<byte>(value);
         public static implicit operator ValueBase(sbyte value) => new Value<sbyte>(value);

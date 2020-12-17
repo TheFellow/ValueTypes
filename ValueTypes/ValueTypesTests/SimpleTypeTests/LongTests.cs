@@ -18,4 +18,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new[] { (long)15, (long)16 }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new[] { (long)15, (long)16 }.AsValues();
     }
+
+    [TestClass]
+    public class LongGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new[] { (long)123, (long)456 }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new[] { (long)16, (long)15 }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new[] { (long)15, (long)16 }.AsGroup();
+    }
 }

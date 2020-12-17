@@ -18,4 +18,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new[] { 'a', 'B', 'c' }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new[] { 'a', 'B', 'c' }.AsValues();
     }
+
+    [TestClass]
+    public class CharGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new[] { 'a', 'b', 'c' }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new[] { 'B', 'a', 'c' }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new[] { 'a', 'c', 'B' }.AsGroup();
+    }
 }

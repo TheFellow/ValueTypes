@@ -18,4 +18,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new byte[] { 0b_0010, 0b_1110 }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new byte[] { 0b_0010, 0b_1110 }.AsValues();
     }
+
+    [TestClass]
+    public class ByteGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new byte[] { 0b_0010, 0b_1010 }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new byte[] { 0b_0010, 0b_1110 }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new byte[] { 0b_1110, 0b_0010 }.AsGroup();
+    }
 }

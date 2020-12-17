@@ -18,4 +18,12 @@ namespace ValueTypesTests.SimpleTypeTests
         protected override ValueSequence GetSampleSequence1() => new[] { true, true }.AsValues();
         protected override ValueSequence GetSampleSequence2() => new[] { true, true }.AsValues();
     }
+
+    [TestClass]
+    public class BoolGroupTests : AbstractGroupTypeTests
+    {
+        protected override ValueGroup GetOtherGroup() => new[] { true }.AsGroup();
+        protected override ValueGroup GetSampleGroup() => new[] { true, false }.AsGroup();
+        protected override ValueGroup GetEquivalentGroup() => new[] { false, true }.AsGroup();
+    }
 }
