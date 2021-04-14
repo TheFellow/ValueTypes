@@ -173,7 +173,7 @@ Not a problem, we've got you covered. Just use `AsGroup`!
 This has the same effect as using the `Group` method to return an unordered collection of properties with Value-type semantics.
 
 Here's an example from the Finance tests which shows that what makes wallets equal is their contents, ignoring order.
-A `Wallet` contains `Money` and `CreditCards`. Here'e is its complete definition:
+A `Wallet` contains `Money` and `CreditCards`. Here's its complete definition:
 
 ```csharp
 public class Wallet : Value
@@ -241,3 +241,12 @@ Assert.AreEqual(t1, t2); // Works
 
 There is no handling for classes which have tuple members.
 This, though, seems *super* unlikely, so I'm not worried about it.
+
+----
+
+**Snippets**
+
+There are two handy snippets available for just wrapping 1 or 2 types into a `Value`.
+Just check:
+[Wrap 1](./ValueTypes/Snippets/val1.snippet) or
+[Wrap 2](./ValueTypes/Snippets/val2.snippet)

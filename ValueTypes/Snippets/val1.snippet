@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Value (1)</Title>
+			<Shortcut>val1</Shortcut>
+			<Description>Code snippet for creating a simple value type which wraps a single value</Description>
+			<Author>Ryan Harris</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+        <Literal>
+          <ID>valuetype</ID>
+          <ToolTip>Value Type</ToolTip>
+          <Default>ValueObject</Default>
+        </Literal>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>field</ID>
+					<ToolTip>field name</ToolTip>
+					<Default>myField</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[public sealed class $valuetype$ : Value
+    {
+        private readonly $type$ _$field$;
+        public $valuetype$($type$ $field$$end$) => _$field$ = $field$;
+        protected override IEnumerable<ValueBase> GetValues() => Yield(_$field$);
+    }]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
