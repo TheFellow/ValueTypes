@@ -7,9 +7,9 @@ namespace ValueTypesTests
     [TestClass]
     public class NamesTests
     {
-        private Seat Alice => new Seat(new PersonalName("Alice", "Wonderland"), 4);
-        private Seat Bob => new Seat(new PersonalName("Bob", "Wonderland"), 5);
-        private Seat Charles => new Seat(new PersonalName("Charles", "Leclerc"), 6);
+        private Seat Alice => new(new PersonalName("Alice", "Wonderland"), 4);
+        private Seat Bob => new(new PersonalName("Bob", "Wonderland"), 5);
+        private Seat Charles => new(new PersonalName("Charles", "Leclerc"), 6);
 
         EqualityComparer<Classroom> _classroomComparer = EqualityComparer<Classroom>.Default;
         EqualityComparer<Rollcall> _rollcallComparer = EqualityComparer<Rollcall>.Default;

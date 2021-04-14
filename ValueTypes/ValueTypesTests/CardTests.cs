@@ -31,20 +31,20 @@ namespace ValueTypesTests
     [TestClass]
     public class HandTests : AbstractValueTypeTests<Hand>
     {
-        private static Hand Pair => new Hand(new[]
+        private static Hand Pair => new(new[]
         {
             new Card(CardValue.Queen, Suit.Clubs),
             new Card(CardValue.Queen, Suit.Spades),
             new Card(CardValue.Number(2), Suit.Spades)
         });
 
-        private static Hand SmStraight1 => new Hand(new[]
+        private static Hand SmStraight1 => new(new[]
         {
             new Card(CardValue.Ace, Suit.Hearts),
             new Card(CardValue.Number(2), Suit.Spades),
             new Card(CardValue.Number(3), Suit.Hearts)
         });
-        private static Hand SmStraight2 => new Hand(new[]
+        private static Hand SmStraight2 => new(new[]
         {
             new Card(CardValue.Number(2), Suit.Spades),
             new Card(CardValue.Number(3), Suit.Hearts),

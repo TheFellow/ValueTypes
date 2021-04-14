@@ -24,9 +24,9 @@ namespace ValueTypesTests
     [TestClass]
     public class SequenceTests
     {
-        Word Hello => new Word("Hello");
-        Word There => new Word("there");
-        Word Friend => new Word("friend.");
+        Word Hello => new("Hello");
+        Word There => new("there");
+        Word Friend => new("friend.");
 
         EqualityComparer<Statement> _comparer = EqualityComparer<Statement>.Default;
 

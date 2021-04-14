@@ -13,7 +13,7 @@ namespace ValueTypesTests.Finance
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Symbol);
 
-        public static Currency USD => new Currency("USD");
-        public static Currency EUR => new Currency("EUR");
+        public static Currency USD => new("USD");
+        public static Currency EUR => new("EUR");
     }
 }

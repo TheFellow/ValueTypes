@@ -10,7 +10,7 @@ namespace ValueTypesTests.Finance
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Company);
 
-        public static CreditCompany Visa => new CreditCompany("Visa");
-        public static CreditCompany MasterCard => new CreditCompany("MasterCard");
+        public static CreditCompany Visa => new("Visa");
+        public static CreditCompany MasterCard => new("MasterCard");
     }
 }

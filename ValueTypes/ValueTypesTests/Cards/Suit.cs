@@ -8,10 +8,10 @@ namespace ValueTypesTests.Cards
         public char Symbol { get; }
         private Suit(char symbol) => Symbol = symbol;
 
-        public static Suit Clubs => new Suit('♣');
-        public static Suit Spades => new Suit('♠');
-        public static Suit Hearts => new Suit('♥');
-        public static Suit Diamonds => new Suit('♦');
+        public static Suit Clubs => new('♣');
+        public static Suit Spades => new('♠');
+        public static Suit Hearts => new('♥');
+        public static Suit Diamonds => new('♦');
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Symbol);
 

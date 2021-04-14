@@ -10,10 +10,10 @@ namespace ValueTypesTests.Cards
         protected override IEnumerable<ValueBase> GetValues() => Yield(Value);
         public override string ToString() => $"{Value}";
 
-        public static CardValue Ace => new CardValue('A');
-        public static CardValue Number(int n) => new CardValue(n.ToString()[0]);
-        public static CardValue Jack => new CardValue('J');
-        public static CardValue Queen => new CardValue('Q');
-        public static CardValue King => new CardValue('K');
+        public static CardValue Ace => new('A');
+        public static CardValue Number(int n) => new(n.ToString()[0]);
+        public static CardValue Jack => new('J');
+        public static CardValue Queen => new('Q');
+        public static CardValue King => new('K');
     }
 }
