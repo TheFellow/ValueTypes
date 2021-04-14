@@ -10,8 +10,8 @@ namespace ValueTypesTests.Geometry
 
         public DirectedLineSegment(Point2d from, Point2d to)
         {
-            this.From = from;
-            this.To = to;
+            From = from;
+            To = to;
         }
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(From, To);

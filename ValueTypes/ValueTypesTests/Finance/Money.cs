@@ -10,8 +10,8 @@ namespace ValueTypesTests.Finance
 
         public Money(Currency currency, Amount amount)
         {
-            this.Currency = currency;
-            this.Amount = amount;
+            Currency = currency;
+            Amount = amount;
         }
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Currency, Amount);

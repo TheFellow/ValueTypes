@@ -8,7 +8,7 @@ namespace ValueTypesTests.Finance
         private string Symbol { get; }
         private Currency(string currency)
         {
-            this.Symbol = currency;
+            Symbol = currency;
         }
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Symbol);

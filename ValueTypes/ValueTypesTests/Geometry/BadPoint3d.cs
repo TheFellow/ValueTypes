@@ -8,7 +8,7 @@ namespace ValueTypesTests.Geometry
     {
         public int Z { get; }
 
-        public BadPoint3d(int x, int y, int z) : base(x, y) => this.Z = z;
+        public BadPoint3d(int x, int y, int z) : base(x, y) => Z = z;
 
         protected override IEnumerable<ValueBase> GetValues() => base.GetValues().Concat(new ValueBase[] { Z });
     }

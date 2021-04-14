@@ -27,7 +27,7 @@ namespace ValueTypes
             return ok && counts.Values.All(c => c == 0);
         }
 
-        public override bool Equals([AllowNull] ValueBase other) => this.Equals(other as ValueGroup);
+        public override bool Equals([AllowNull] ValueBase other) => Equals(other as ValueGroup);
         public override int GetHashCode()
         {
             var hash = new HashCode();

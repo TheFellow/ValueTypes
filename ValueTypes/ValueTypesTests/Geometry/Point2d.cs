@@ -10,8 +10,8 @@ namespace ValueTypesTests.Geometry
 
         public Point2d(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(X, Y);

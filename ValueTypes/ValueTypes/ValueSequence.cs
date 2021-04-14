@@ -10,9 +10,9 @@ namespace ValueTypes
         public ValueSequence(ValueBase[] values) => Values = values;
 
 
-        public bool Equals([AllowNull] ValueSequence other) => !(other is null) && this.Values.SequenceEqual(other.Values);
+        public bool Equals([AllowNull] ValueSequence other) => !(other is null) && Values.SequenceEqual(other.Values);
 
-        public override bool Equals([AllowNull] ValueBase other) => this.Equals(other as ValueSequence);
+        public override bool Equals([AllowNull] ValueBase other) => Equals(other as ValueSequence);
         public override int GetHashCode()
         {
             var hash = new HashCode();

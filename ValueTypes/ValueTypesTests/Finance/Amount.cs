@@ -13,7 +13,7 @@ namespace ValueTypesTests.Finance
             if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount), "Amount must be positive.");
             if (Math.Round(amount, 2) != amount) throw new ArgumentOutOfRangeException(nameof(amount), "Amount can only have 2-digits of precision.");
 
-            this.Value = amount;
+            Value = amount;
         }
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Value);

@@ -11,9 +11,9 @@ namespace ValueTypesTests.Geometry
 
         public Point3d(int x, int y, int z)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(X, Y, Z);

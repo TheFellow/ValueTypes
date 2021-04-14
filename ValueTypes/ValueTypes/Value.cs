@@ -6,15 +6,15 @@ using System.Linq;
 namespace ValueTypes
 {
     public sealed class Value<T> : ValueBase
-        where T : struct
+        where T : notnull
     {
         public T Content { get; }
-        public Value(T content) => this.Content = content;
+        public Value(T content) => Content = content;
 
         public override bool Equals([AllowNull] ValueBase other)
         {
             if (other is null) return false;
-            if (other is Value<T> value) return this.Content.Equals(value.Content);
+            if (other is Value<T> value) return Content.Equals(value.Content);
             return false;
         }
         
@@ -29,7 +29,7 @@ namespace ValueTypes
         {
             if (other is null) return false;
             if (GetType() != other.GetType()) return false;
-            return this.GetValues().SequenceEqual(((Value)other).GetValues());
+            return GetValues().SequenceEqual(((Value)other).GetValues());
         }
 
         public sealed override int GetHashCode()
