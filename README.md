@@ -59,12 +59,12 @@ public sealed class Point2d : Value
 ```
 
 The signature is `Yield(params ValueBase[] values)` so you're free to pass as many
-arguments as needed. The implict cast takes care of everything else for you.
+arguments as needed. The implicit cast takes care of everything else for you.
 It doesn't get much simpler than that!
 
 ### Value.Group()
 
-There are occassions where this will not be sufficient, however.
+There are occasions where this will not be sufficient, however.
 For example, sometimes a collection of values should be Equal regardless of their order.
 
 As an example, let's say that we have a `Wallet` type which contains a collection of dollar bills.
@@ -107,14 +107,14 @@ the segment from (4,5) to (2,3).
 If we were to use `Yield()` we would be implementing a `Vector`, which is directed.
 
 ### Sequences (Nested Yield)
-These case represent almost the opposite of a Group. This is for use in a case where you have a sequence of `Values` that
+This case represents almost the opposite of a Group. This is for use in a case where you have a sequence of `Values` that
 are just one part of your `Value`. These are cases where you want to `Yield` a whole sequence of `Value` types in a single unit.
 
 Order within the unit does matter, otherwise you'd just use a `Group`. An example would help here.
 
 Suppose you are modelling two aspects of a classroom. The room itself, and the process of taking attendance.
 If there are the same people in the classroom in the same seats then we want to say the classroom is the same.
-On the other hand, when taking attendance the people in the classroom may enter in different orders;
+On the other hand, when taking attendance, the people in the classroom may enter in different orders;
 In this case rollcall goes differently because it's in a different order. Same people, same seats, different order means different rollcall.
 
 (I know this is a bit of a stretched example, I wish I would have done the difference between the bill at
@@ -146,7 +146,7 @@ public class Rollcall : Value
 }
 ```
 
-The `AsValues` extension method essentially let's you `Yield` a standalone sequence of values
+The `AsValues` extension method essentially lets you `Yield` a standalone sequence of values
 in lieu of having to write `Yield(Field1, Field2, ...)`
 
 Note that you can certainly mix and match these things together as needed:
@@ -205,7 +205,7 @@ var wallet2 = new Wallet(
 
 ### IEquatable\<T\>
 
-As of 1.2.0 there is now a new extension method `AsaValue()` on `IEquatable<T>`.
+As of 1.2.0 there is now a new extension method `AsValue()` on `IEquatable<T>`.
 This allows the easy conversion to a value given an object which implements IEquatable.
 
 An example from the tests:
@@ -223,17 +223,17 @@ public class ColorTests : AbstractValueTypeTests<Color>
 
 The major intent behind adding behavior for `IEquatable` was to add support for C# 9 `record`s.
 
-> To be fair I should haave hada this from the beginning, but I'm glad it's here now
+> To be fair I should have had this from the beginning, but I'm glad it's here now
 
 Importantly you can mix and match records and values as you like and they all play together nicely.
-For example, the Vaalue (class) `Temperature` yields a `record` `ThermalUnit` as one of its values:
+For example, the Value (class) `Temperature` yields a `record` `ThermalUnit` as one of its values:
 ```csharp
 public record ThermalUnit
 {
     private ThermalUnit() { }
     public string Symbol { get; init; } = string.Empty;
 
-    public static ThermalUnit Farenheit => new() { Symbol = "F" };
+    public static ThermalUnit Fahrenheit => new() { Symbol = "F" };
     public static ThermalUnit Celsius => new() { Symbol = "C" };
 }
 
@@ -248,7 +248,7 @@ public class Temperature : Value
 }
 ```
 
-Similarly the `record` `ChemicalCompound` below has a `Chemical` value (class) as a member:
+Similarly, the `record` `ChemicalCompound` below has a `Chemical` value (class) as a member:
 ```csharp
 public sealed class Chemical : Value
 {
@@ -288,7 +288,7 @@ That is, {07/04/2019 01:23:45} should be the same as {07/04/2019 08:06:13}.
 
 This is likely already handled by your business logic, but I don't make that assumption.
 
-So what do I do?
+So, what do I do?
 
 The recommended solution for this example would be to Yield
 `date.ToString("yyyyMMdd")`.

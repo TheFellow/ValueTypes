@@ -8,7 +8,7 @@ namespace ValueTypesTests.Records
         private ThermalUnit() { }
         public string Symbol { get; init; } = string.Empty;
 
-        public static ThermalUnit Farenheit => new() { Symbol = "F" };
+        public static ThermalUnit Fahrenheit => new() { Symbol = "F" };
         public static ThermalUnit Celsius => new() { Symbol = "C" };
     }
 

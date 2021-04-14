@@ -8,7 +8,7 @@ namespace ValueTypesTests
     [TestClass]
     public class ValueRecordTests : AbstractValueTypeTests<ThermalUnit>
     {
-        protected override ValueBase GetOtherValue() => ThermalUnit.Farenheit.AsValue();
+        protected override ValueBase GetOtherValue() => ThermalUnit.Fahrenheit.AsValue();
         protected override ValueBase GetSampleValue1() => ThermalUnit.Celsius.AsValue();
         protected override ValueBase GetSampleValue2() => ThermalUnit.Celsius.AsValue();
     }
@@ -16,7 +16,7 @@ namespace ValueTypesTests
     [TestClass]
     public class ValueOfRecordTests : AbstractValueTypeTests<Temperature>
     {
-        protected override ValueBase GetOtherValue() => new Temperature(ThermalUnit.Farenheit, 32);
+        protected override ValueBase GetOtherValue() => new Temperature(ThermalUnit.Fahrenheit, 32);
         protected override ValueBase GetSampleValue1() => new Temperature(ThermalUnit.Celsius, 0);
         protected override ValueBase GetSampleValue2() => new Temperature(ThermalUnit.Celsius, 0);
     }
