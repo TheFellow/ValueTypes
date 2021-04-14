@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ValueTypes
+namespace ValueTypes.Implementation
 {
     public abstract class ValueBase : IEquatable<ValueBase>
     {

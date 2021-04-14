@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace ValueTypes
+namespace ValueTypes.Implementation
 {
     public sealed class ValueString : ValueBase
     {
@@ -8,9 +8,9 @@ namespace ValueTypes
         public ValueString(string? content) => Content = content;
 
         public override bool Equals([AllowNull] ValueBase other)
-        { 
+        {
             if (other is null) return false;
-            if (other is ValueString value) return Content?.Equals(value.Content) ?? (Content is null && value.Content is null);
+            if (other is ValueString value) return Content?.Equals(value.Content) ?? Content is null && value.Content is null;
             return false;
         }
 

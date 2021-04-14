@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ValueTypes;
+using ValueTypes.Implementation;
 
 namespace ValueTypesTests.Names
 {

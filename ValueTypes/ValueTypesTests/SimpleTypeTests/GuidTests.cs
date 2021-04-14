@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using ValueTypes;
+using ValueTypes.Implementation;
 
 namespace ValueTypesTests.SimpleTypeTests
 {

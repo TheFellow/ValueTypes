@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ValueTypes;
+using ValueTypes.Implementation;
 using ValueTypesTests.Nullables;
 
 namespace ValueTypesTests

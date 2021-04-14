@@ -1,4 +1,5 @@
 ﻿using System;
+using ValueTypes.Implementation;
 
 namespace ValueTypes
 {

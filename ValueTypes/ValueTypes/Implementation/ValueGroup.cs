@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace ValueTypes
+namespace ValueTypes.Implementation
 {
     public sealed class ValueGroup : ValueBase, IEquatable<ValueGroup>
     {

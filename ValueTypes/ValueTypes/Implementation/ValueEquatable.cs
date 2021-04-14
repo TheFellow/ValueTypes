@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ValueTypes
+namespace ValueTypes.Implementation
 {
     public sealed class ValueEquatable<T> : ValueBase
         where T : IEquatable<T>

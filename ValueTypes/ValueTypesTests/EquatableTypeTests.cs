@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using ValueTypes;
+using ValueTypes.Implementation;
 
 namespace ValueTypesTests
 {
