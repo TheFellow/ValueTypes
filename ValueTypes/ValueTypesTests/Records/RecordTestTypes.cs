@@ -10,7 +10,6 @@ namespace ValueTypesTests.Records
 
         public static ThermalUnit Farenheit => new() { Symbol = "F" };
         public static ThermalUnit Celsius => new() { Symbol = "C" };
-
     }
 
     public class Temperature : Value
@@ -18,11 +17,7 @@ namespace ValueTypesTests.Records
         ThermalUnit Unit { get; }
         int Amount { get; }
 
-        public Temperature(ThermalUnit unit, int amount)
-        {
-            Unit = unit;
-            Amount = amount;
-        }
+        public Temperature(ThermalUnit unit, int amount) => (Unit, Amount) = (unit, amount);
 
         protected override IEnumerable<ValueBase> GetValues() => Yield(Amount, Unit.AsValue());
     }
@@ -31,26 +26,18 @@ namespace ValueTypesTests.Records
     {
         private readonly string _commonName;
         private readonly string _chemicalName;
-        private Chemical(string commonName, string chemicalName) =>
-            (_commonName, _chemicalName) = (commonName, chemicalName);
+        private Chemical(string commonName, string chemicalName) => (_commonName, _chemicalName) = (commonName, chemicalName);
         protected override IEnumerable<ValueBase> GetValues() => Yield(_commonName, _chemicalName);
 
         public static Chemical Alcohol => new("Alcohol", "Ethanol");
         public static Chemical Chalk => new("Chalk", "Calcium Carbonate");
-        public static Chemical VitaminC => new("Vitamin C", "Ascorbic Acid");
     }
-
-    public record MolecularFormula(string Formula);
 
     public record ChemicalCompound
     {
         public Chemical Chemical { get; }
-        public MolecularFormula Formula { get; }
+        public string Formula { get; }
 
-        public ChemicalCompound(Chemical chemical, MolecularFormula formula)
-        {
-            Chemical = chemical;
-            Formula = formula;
-        }
+        public ChemicalCompound(Chemical chemical, string formula) => (Chemical, Formula) = (chemical, formula);
     }
 }

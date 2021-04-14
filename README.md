@@ -203,6 +203,73 @@ var wallet2 = new Wallet(
     });
 ```
 
+### IEquatable\<T\>
+
+As of 1.2.0 there is now a new extension method `AsaValue()` on `IEquatable<T>`.
+This allows the easy conversion to a value given an object which implements IEquatable.
+
+An example from the tests:
+```csharp
+[TestClass]
+public class ColorTests : AbstractValueTypeTests<Color>
+{
+    protected override ValueBase GetOtherValue() => Color.Red.AsValue();
+    protected override ValueBase GetSampleValue1() => Color.Blue.AsValue();
+    protected override ValueBase GetSampleValue2() => Color.Blue.AsValue();
+}
+```
+
+#### Records (C# 9)
+
+The major intent behind adding behavior for `IEquatable` was to add support for C# 9 `record`s.
+
+> To be fair I should haave hada this from the beginning, but I'm glad it's here now
+
+Importantly you can mix and match records and values as you like and they all play together nicely.
+For example, the Vaalue (class) `Temperature` yields a `record` `ThermalUnit` as one of its values:
+```csharp
+public record ThermalUnit
+{
+    private ThermalUnit() { }
+    public string Symbol { get; init; } = string.Empty;
+
+    public static ThermalUnit Farenheit => new() { Symbol = "F" };
+    public static ThermalUnit Celsius => new() { Symbol = "C" };
+}
+
+public class Temperature : Value
+{
+    ThermalUnit Unit { get; }
+    int Amount { get; }
+
+    public Temperature(ThermalUnit unit, int amount) => (Unit, Amount) = (unit, amount);
+
+    protected override IEnumerable<ValueBase> GetValues() => Yield(Amount, Unit.AsValue());
+}
+```
+
+Similarly the `record` `ChemicalCompound` below has a `Chemical` value (class) as a member:
+```csharp
+public sealed class Chemical : Value
+{
+    private readonly string _commonName;
+    private readonly string _chemicalName;
+    private Chemical(string commonName, string chemicalName) => (_commonName, _chemicalName) = (commonName, chemicalName);
+    protected override IEnumerable<ValueBase> GetValues() => Yield(_commonName, _chemicalName);
+
+    public static Chemical Alcohol => new("Alcohol", "Ethanol");
+    public static Chemical Chalk => new("Chalk", "Calcium Carbonate");
+}
+
+public record ChemicalCompound
+{
+    public Chemical Chemical { get; }
+    public string Formula { get; }
+
+    public ChemicalCompound(Chemical chemical, string formula) => (Chemical, Formula) = (chemical, formula);
+}
+```
+
 ### Comments
 
 If you have a combination of unordered collections, and single members, you can just

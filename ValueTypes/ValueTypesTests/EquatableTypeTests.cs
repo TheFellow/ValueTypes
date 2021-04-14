@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Drawing;
 using ValueTypes;
 
 namespace ValueTypesTests
@@ -20,5 +21,13 @@ namespace ValueTypesTests
         protected override ValueBase GetOtherValue() => new EquatableInt(5).AsValue();
         protected override ValueBase GetSampleValue1() => new EquatableInt(4).AsValue();
         protected override ValueBase GetSampleValue2() => new EquatableInt(4).AsValue();
+    }
+
+    [TestClass]
+    public class ColorTests : AbstractValueTypeTests<Color>
+    {
+        protected override ValueBase GetOtherValue() => Color.Red.AsValue();
+        protected override ValueBase GetSampleValue1() => Color.Blue.AsValue();
+        protected override ValueBase GetSampleValue2() => Color.Blue.AsValue();
     }
 }
