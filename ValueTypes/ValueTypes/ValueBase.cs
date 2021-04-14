@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using ValueTypes.Implementation;
 
-namespace ValueTypes.Implementation
+namespace ValueTypes
 {
     public abstract class ValueBase : IEquatable<ValueBase>
     {

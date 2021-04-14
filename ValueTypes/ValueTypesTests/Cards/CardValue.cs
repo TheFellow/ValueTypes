@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ValueTypes;
-using ValueTypes.Implementation;
 
 namespace ValueTypesTests.Cards
 {

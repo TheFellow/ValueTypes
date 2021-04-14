@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ValueTypes.Implementation;
+using ValueTypes;
 
 namespace ValueTypesTests.Geometry
 {

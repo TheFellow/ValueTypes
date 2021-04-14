@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using ValueTypes.Implementation;
+using ValueTypes;
 using ValueTypesTests.Finance;
 
 namespace ValueTypesTests
